@@ -11,7 +11,10 @@ SELECT
     acceptance.external_ref,
     acceptance.source,
     acceptance.date_time,
-    acceptance.state = 'ACCEPTED' AS is_accepted,
+    CASE 
+        WHEN chargeback.chargeback THEN False
+        ELSE acceptance.state = 'ACCEPTED' 
+    END AS is_accepted,
     acceptance.cvv_provided,
     acceptance.amount / (acceptance.rates::json->>acceptance.currency)::NUMERIC AS amount_in_dolar,
     acceptance.country,
