@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_globepay__acceptance_report
+    description: Staging layer about which transactions have been completed or - not_null
+    columns:
+      - name: external_ref
+      - name: status
+      - name: source
+      - name: chargeback
+
+  - name: stg_globepay__chargeback_report
+    description: <>
+    

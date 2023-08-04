@@ -8,8 +8,8 @@ sources:
     schema: public
 
     tables:
-      - name: globepay_acceptance_report
-        description: external_ref
+      - name: acceptance_report
+        description: Report about which transctions have been accepeted or not 
         identifier: globepay_acceptance_report
         columns:
           - name: external_ref
@@ -19,12 +19,16 @@ sources:
           - name: status
             tests:
               - accepted_values:
-                values: [true]
-                  
-            
+                  values: [true]
+          - name: date_time
+            tests:
+              - not_null
 
-
-      - name: globepay_chargeback_report
+      - name: chargeback_report
         description: <>
         identifier: globepay_chargeback_report
-
+        columns:
+          - name: status
+            tests:
+              - accepted_values:
+                  values: [true]
